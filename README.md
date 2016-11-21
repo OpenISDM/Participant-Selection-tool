@@ -39,3 +39,6 @@ java -classpath jxl.jar; Main PSP_input.xls
 [1] http://jexcelapi.sourceforge.net/
 
 [2] http://ppt.cc/mPAX0
+
+[3] VMS frontend repository : https://github.com/OpenISDM/VMS-frontend
+    VMS backend reposirtory : https://github.com/OpenISDM/VMS
