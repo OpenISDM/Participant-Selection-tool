@@ -83,13 +83,13 @@ public class PSP_Data {
 			NumOfParticipantsInRegions = new int[REGIONS+1];
 			assignmentDouble = new int[REGIONS+1][PARTICIPANTS+1];
 			
-			for(int i=4 ; i<PARTICIPANTS ; i++)
+			// add 4 because the data starts at i=4
+			for(int i=4 ; i<PARTICIPANTS+4 ; i++)
 			{
 				// participant id
 				participants[i-3][0] = String.valueOf(project.getCell(1, i).getContents());;
 				// participant name
 				participants[i-3][1] = String.valueOf(project.getCell(2, i).getContents());;
-				System.out.println(" "+participants[i-3][1]);
 			}
 			
 			// parse region values and name from sheet values
@@ -138,7 +138,7 @@ public class PSP_Data {
 
 	// output TPP input with PSP information
 	// this may be needed in the future
-	/*
+	
 	public void GenerateTPPInput(String input) throws IOException, RowsExceededException, WriteException
 	{
 		WritableWorkbook TPPInput;
@@ -197,7 +197,26 @@ public class PSP_Data {
 		TPPInput.write();
 		TPPInput.close();
 	}
-	*/
+	
+	
+	// output PSP results in excel format
+	public void OutputPSPResults() throws IOException, RowsExceededException, WriteException
+	{
+		WritableWorkbook PSPOutput;
+		PSPOutput = Workbook.createWorkbook(new File("PSP_output.xls"));
+		WritableSheet project = PSPOutput.createSheet("results", 0);
+		//WritableSheet[] rSheets = new WritableSheet[REGIONS+1];
+		for(int i=1 ; i<=PARTICIPANTS ; i++)
+		{	
+			
+			int j = assignment[i];
+			project.addCell(new Label(0,i,participants[i][1]));
+			project.addCell(new Label(1,i,participants[i][1]));
+			
+		}
+		
+	}
+	
 	// outputing files for neos
 	// @param : formerSheetName : name for former style sheet of gougou
 	// @param : gdxName : name for the gdx file 

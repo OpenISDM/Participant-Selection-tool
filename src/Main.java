@@ -16,6 +16,7 @@ public class Main {
 		// run PSP heuristic
 		heuristics.PSP_G();
 		
+		pspData.GenerateTPPInput("TPP_input.xls");
 		
 	
 		//output psp results to a excel file
